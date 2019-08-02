@@ -20,7 +20,7 @@ def getCurrencyExchange()
   return currStore
 end
 
-db = SQLite3::Database.new 'ExchangesRate.db'
+db = SQLite3::Database.new '../ExchangesRate.db'
 
 # Create a table
 result = db.execute <<-SQL
@@ -37,4 +37,3 @@ loop do
   db.execute('insert or ignore into ExchangesRate (date, value) values (?, ?)', [store['Date'],store['USD']])
   sleep 3600 * 12 # wait 12h
 end
-
